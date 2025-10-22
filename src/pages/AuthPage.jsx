@@ -43,3 +43,10 @@ export default AuthPage;
 //1. DEFINE USESTATE
 //2. GIVE INPUT VALUE
 //3. GIVE INPUT ONCHANGE
+
+
+//CRUD
+// C-CREATE
+// R-READ
+// U-UPDATE
+// D-DELETE

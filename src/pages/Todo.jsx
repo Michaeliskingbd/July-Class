@@ -11,7 +11,7 @@ function TodoApp() {
       text: input,
       completed: false,
     };
-    setTodos([...todos, newTodo]);
+    setTodos([...todos, newTodo]); //Spread Operator
     setInput("");
   };
 

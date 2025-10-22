@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <>
       <footer className="flex h-96 font-sans bg-[#ffff]">
-        <div className="flex gap-40 px-20 capitalize pt-24">
+        <div className="lg:flex flex-col gap-40 px-20 capitalize pt-24">
           <div className="flex flex-col gap-2">
             <h1 className="font-[650] text-xl">Quick Links</h1>
             <ul className="flex flex-col gap-2 cursor-pointer">

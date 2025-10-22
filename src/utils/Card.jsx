@@ -1,6 +1,7 @@
 import React from "react";
 
 const Card = ({ title, subtitle, text, backImg }) => {
+  const isWinter = true;
   return (
     <article
       style={{ backgroundImage: `url(${backImg})` }}
@@ -13,9 +14,11 @@ const Card = ({ title, subtitle, text, backImg }) => {
         <div className="z-50">
           <button
             title="shop now"
-            className="bg-white text-black p-3 font-semibold w-[150px] transition-all duration-150 ease-in  hover:bg-black hover:text-white"
+            className={`text-blue-500 p-5  ${
+              isWinter ? "bg-blue-200" : "bg-red-500"
+            }`}
           >
-            {text}
+            Shop now
           </button>
         </div>
       </div>
