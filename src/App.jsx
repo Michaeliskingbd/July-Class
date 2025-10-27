@@ -1,14 +1,16 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Conditions from "./pages/Conditions";
 import Home from "./pages/Home";
-
-import TodoApp from "./pages/Todo";
+import AuthPage from "./pages/AuthPage";
+import About from "./pages/About";
 
 function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <Routes>
+      <Route path="/" index element={<Home />} />
+      <Route path="/auth" element={<AuthPage />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
   );
 }
 

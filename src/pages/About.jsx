@@ -3,7 +3,7 @@ import Category from "../components/Category";
 const About = () => {
   return (
     <div>
-      <Category/>
+      <Category />
     </div>
   );
 };

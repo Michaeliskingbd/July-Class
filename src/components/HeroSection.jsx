@@ -5,6 +5,7 @@ import Logo from "../assets/logo.png";
 import { IoMdMenu } from "react-icons/io";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const [isWinter, setIsWinter] = useState(false);
@@ -33,7 +34,10 @@ const HeroSection = () => {
           </div>
           <div className="flex items-center gap-6 z-10 ">
             <ul className="lg:flex items-center gap-6 uppercase hidden">
-              <li>About</li>
+              <Link to="/about">
+                <li>About</li>
+              </Link>
+
               <li>Contact us</li>
             </ul>
             <span className="ml-4">$0.00</span>
@@ -45,6 +49,10 @@ const HeroSection = () => {
             </div>
 
             <FaUser className="text-white text-xl lg:block hidden" />
+            <Link to="auth">
+              <button>Login</button>
+            </Link>
+
             <button
               onClick={mobileNav}
               className={

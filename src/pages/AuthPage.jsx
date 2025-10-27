@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const AuthPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const navigate = useNavigate();
+  const login = () => {
+    navigate("/");
+  };
 
   return (
     <section className="h-screen w-screen flex justify-center items-center bg-gradient-to-tl from-blue-300 via-white to-red-300">
@@ -19,17 +27,31 @@ const AuthPage = () => {
               placeholder="Enter Your Username"
             />
           </div>
-          <div className="w-full  h-[40px] border-[1px] rounded-lg border-blue-500">
+          <div className="w-full relative  h-[40px] border-[1px] rounded-lg border-blue-500">
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full h-full indent-4 bg-transparent outline-none"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Enter Your Password"
             />
+            {showPassword ? (
+              <IoMdEyeOff
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute text-xl right-3 top-3"
+              />
+            ) : (
+              <IoMdEye
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute text-xl right-3 top-3"
+              />
+            )}
           </div>
 
-          <button className="text-center w-full bg-blue-500 py-2 text-white rounded-lg">
+          <button
+            onClick={login}
+            className="text-center w-full bg-blue-500 py-2 text-white rounded-lg"
+          >
             Submit
           </button>
         </form>
@@ -43,7 +65,6 @@ export default AuthPage;
 //1. DEFINE USESTATE
 //2. GIVE INPUT VALUE
 //3. GIVE INPUT ONCHANGE
-
 
 //CRUD
 // C-CREATE
