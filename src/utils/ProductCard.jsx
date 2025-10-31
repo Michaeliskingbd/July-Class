@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 //Mapping
 //Array of Product is Mimicking API in this context
@@ -48,10 +50,13 @@ const products = [
 ];
 
 const ProductCard = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       {products.map((p, idx) => (
-        <article key={idx} className="">
+        <article key={idx} data-aos="fade-up" data-aos-duration="3000">
           <img className="mb-2 w-60" src={p.image}></img>
           <h3 className="font-bold mb-1">{p.name}</h3>
           <h5 className="text- text-gray-400 mb-1">{p.category}</h5>

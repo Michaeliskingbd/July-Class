@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Counter = () => {
   let nameOfStore = "Olamide's store";
@@ -12,6 +12,10 @@ const Counter = () => {
       setCount(count - 1);
     }
   };
+
+  useEffect(() => {
+    console.log("this compont is rendered");
+  }, []); //Dependency Array
 
   return (
     <div>

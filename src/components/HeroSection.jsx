@@ -6,6 +6,7 @@ import { IoMdMenu } from "react-icons/io";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 
 const HeroSection = () => {
   const [isWinter, setIsWinter] = useState(false);
@@ -73,8 +74,17 @@ const HeroSection = () => {
           <div className="text-white space-y-6 px-6 z-50">
             <h1 className="text-6xl font-semibold">
               Raining Offers For <br />
-              {isWinter ? "Cold Winter" : " Hot Summer!"}
+              <Typewriter
+                words={["Hot Summer", "Cold Winter"]}
+                loop={0}
+                cursor
+                cursorStyle="_"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={4000}
+              />
             </h1>
+
             <h4 className="text-2xl font-semibold">25% Off On All Products</h4>
             <div className="space-x-4">
               <button

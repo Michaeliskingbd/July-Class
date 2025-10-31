@@ -8,8 +8,13 @@ const AuthPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
-  const login = () => {
-    navigate("/");
+  const login = (e) => {
+    e.preventDefault();
+    if (username === "admin" && password === "1234") {
+      navigate("/");
+    } else {
+      alert("invalid credentials");
+    }
   };
 
   return (
