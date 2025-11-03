@@ -1,19 +1,33 @@
+import axios from "axios";
 import { useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../utils/Spinner";
 
 const AuthPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   const navigate = useNavigate();
-  const login = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (username === "admin" && password === "1234") {
-      navigate("/");
-    } else {
-      alert("invalid credentials");
+    try {
+      setLoading(true);
+      const response = await axios.post("https://fakestoreapi.com/auth/login", {
+        username,
+        password,
+      });
+      if (response.status === 201) {
+        navigate("/");
+        setErrorMessage(false);
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error("Error", err);
+      setErrorMessage(err.response.data);
+      setLoading(false);
     }
   };
 
@@ -21,8 +35,8 @@ const AuthPage = () => {
     <section className="h-screen w-screen flex justify-center items-center bg-gradient-to-tl from-blue-300 via-white to-red-300">
       <div className=" w-[400px]  p-6 border-[1px] bg-white  border-blue-500 rounded-2xl shadow-xl ">
         <h1 className="text-3xl mb-5 font-bold text-gray-500 ">Sign up</h1>
-        <p className="mb-2 text-xl font-bold">Welcome {username}</p>
-        <form className="space-y-4">
+        <p className="mb-2 text-xl font-bold">Welcome</p>
+        <form onSubmit={handleLogin} className="space-y-4">
           <div className="w-full  h-[40px] border-[1px] rounded-lg border-blue-500">
             <input
               value={username}
@@ -32,7 +46,7 @@ const AuthPage = () => {
               placeholder="Enter Your Username"
             />
           </div>
-          <div className="w-full relative  h-[40px] border-[1px] rounded-lg border-blue-500">
+          <div className="w-full  relative  h-[40px] border-[1px] rounded-lg border-blue-500">
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -53,11 +67,12 @@ const AuthPage = () => {
             )}
           </div>
 
-          <button
-            onClick={login}
-            className="text-center w-full bg-blue-500 py-2 text-white rounded-lg"
-          >
-            Submit
+          {errorMessage && (
+            <p className="text-red-500 font-semibold italic">{errorMessage}</p>
+          )}
+
+          <button className="flex items-center justify-center text-center w-full bg-blue-500 py-2 text-white rounded-lg ">
+            {loading ? <Spinner /> : "Submit"}
           </button>
         </form>
       </div>
@@ -76,3 +91,5 @@ export default AuthPage;
 // R-READ
 // U-UPDATE
 // D-DELETE
+
+//https://fakestoreapi.com/auth/login

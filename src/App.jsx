@@ -10,7 +10,7 @@ import ErrorPage from "./pages/ErrorPage";
 function App() {
   return (
     <Routes>
-      <Route path="/" index element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/about" element={<About />} />
       <Route path="/counter" element={<Counter />} />
@@ -21,3 +21,5 @@ function App() {
 }
 
 export default App;
+//mor_2314 username
+//83r5^_ password
