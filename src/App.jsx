@@ -6,6 +6,8 @@ import About from "./pages/About";
 import Counter from "./pages/Counter";
 import ProductPage from "./pages/ProductPage";
 import ErrorPage from "./pages/ErrorPage";
+import Products from "./pages/Products";
+import SingleProductPage from "./pages/SingleProductPage";
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/about" element={<About />} />
       <Route path="/counter" element={<Counter />} />
-      <Route path="/productpage" element={<ProductPage />} />
+      <Route path="/productsPage" element={<ProductPage />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/products/:id" element={<SingleProductPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
