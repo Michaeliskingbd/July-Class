@@ -8,19 +8,22 @@ import ProductPage from "./pages/ProductPage";
 import ErrorPage from "./pages/ErrorPage";
 import Products from "./pages/Products";
 import SingleProductPage from "./pages/SingleProductPage";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/auth" element={<AuthPage />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/counter" element={<Counter />} />
-      <Route path="/productsPage" element={<ProductPage />} />
-      <Route path="/products" element={<Products />} />
-      <Route path="/products/:id" element={<SingleProductPage />} />
-      <Route path="*" element={<ErrorPage />} />
-    </Routes>
+    <UserProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/counter" element={<Counter />} />
+        <Route path="/productsPage" element={<ProductPage />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<SingleProductPage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </UserProvider>
   );
 }
 

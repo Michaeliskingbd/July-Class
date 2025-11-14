@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../utils/Spinner";
+import { useUser } from "../context/UserContext";
 
 const AuthPage = () => {
   const [username, setUsername] = useState("");
@@ -11,17 +12,25 @@ const AuthPage = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const navigate = useNavigate();
+
+  // const { setUser } = useUser();
+
+  const { setUser } = useUser();
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await axios.post("https://fakestoreapi.com/auth/login", {
+      const response = await axios.post("https://dummyjson.com/auth/login", {
         username,
         password,
       });
-      if (response.status === 201) {
+      if (response.status === 200) {
         navigate("/");
         setErrorMessage(false);
+
+        console.log(response);
+        setUser(response.data.firstName);
         setLoading(false);
       }
     } catch (err) {

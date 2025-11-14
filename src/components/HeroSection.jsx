@@ -7,10 +7,13 @@ import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
+import { useUser } from "../context/UserContext";
 
 const HeroSection = () => {
   const [isWinter, setIsWinter] = useState(false);
   const [showMobileNav, setShowMobileNav] = useState(false);
+
+  const { user } = useUser();
 
   const winter = () => {
     setIsWinter(true);
@@ -19,6 +22,8 @@ const HeroSection = () => {
   const mobileNav = () => {
     setShowMobileNav(!showMobileNav);
   };
+
+  // if (!user) return <p>not logged in</p>;
   return (
     <>
       <section className="relative h-screen bg-red-300 bg-[url('https://websitedemos.net/brandstore-02/wp-content/uploads/sites/150/2019/12/home-new-bg-free-img.jpg')] bg-cover bg-center ">
@@ -41,7 +46,7 @@ const HeroSection = () => {
 
               <li>Contact us</li>
             </ul>
-            <span className="ml-4">$0.00</span>
+            <span className="ml-4">{user}</span>
             <div className="relative">
               <HiOutlineShoppingBag className="text-xl" />
               <div className="top-[-10px] right-[-10px] absolute bg-white size-5 rounded-full text-black text-center text-sm font-semibold">
@@ -51,7 +56,7 @@ const HeroSection = () => {
 
             <FaUser className="text-white text-xl lg:block hidden" />
             <Link to="auth">
-              <button>Login</button>
+              {user ? <p>{user}</p> : <button>Login</button>}
             </Link>
 
             <button
@@ -85,14 +90,18 @@ const HeroSection = () => {
               />
             </h1>
 
-            <h4 className="text-2xl font-semibold">25% Off On All Products</h4>
+            <h4 className="text-2xl font-semibold"></h4>
             <div className="space-x-4">
-              <button
-                onClick={winter}
-                className="bg-white text-black py-4 px-5 font-semibold hover:bg-black hover:text-white"
-              >
-                SHOP NOW
-              </button>
+              {user ? (
+                <button
+                  onClick={winter}
+                  className="bg-white text-black py-4 px-5 font-semibold hover:bg-black hover:text-white"
+                >
+                  SHOP NOW
+                </button>
+              ) : (
+                "dhdggidigidg0ihdiogiod"
+              )}
               <button className="border-2 border-white py-[14px] px-5">
                 FIND MORE
               </button>
