@@ -8,12 +8,15 @@ import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import { useUser } from "../context/UserContext";
+import { useProfileImage } from "../context/AuthContext";
 
 const HeroSection = () => {
   const [isWinter, setIsWinter] = useState(false);
   const [showMobileNav, setShowMobileNav] = useState(false);
 
   const { user } = useUser();
+  const { userProfileImage } = useProfileImage();
+  console.log(userProfileImage);
 
   const winter = () => {
     setIsWinter(true);
@@ -46,13 +49,14 @@ const HeroSection = () => {
 
               <li>Contact us</li>
             </ul>
-            <span className="ml-4">{user}</span>
+
             <div className="relative">
               <HiOutlineShoppingBag className="text-xl" />
               <div className="top-[-10px] right-[-10px] absolute bg-white size-5 rounded-full text-black text-center text-sm font-semibold">
                 0
               </div>
             </div>
+            <img src={userProfileImage} alt="profileimage" />
 
             <FaUser className="text-white text-xl lg:block hidden" />
             <Link to="auth">
@@ -92,16 +96,13 @@ const HeroSection = () => {
 
             <h4 className="text-2xl font-semibold"></h4>
             <div className="space-x-4">
-              {user ? (
-                <button
-                  onClick={winter}
-                  className="bg-white text-black py-4 px-5 font-semibold hover:bg-black hover:text-white"
-                >
-                  SHOP NOW
-                </button>
-              ) : (
-                "dhdggidigidg0ihdiogiod"
-              )}
+              <button
+                onClick={winter}
+                className="bg-white text-black py-4 px-5 font-semibold hover:bg-black hover:text-white"
+              >
+                SHOP NOW
+              </button>
+
               <button className="border-2 border-white py-[14px] px-5">
                 FIND MORE
               </button>

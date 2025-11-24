@@ -22,7 +22,7 @@ const Products = () => {
       {products.map((p, idx) => (
         <Link to={`${p.id}`}>
           <article key={idx} className="relative shadow-md w-72">
-            <img className="w-52" src={p.images[0]} alt="image" />
+            <img className="w-52" src={p.images} alt="image" />
             <div className="p-4">
               <p className="font-semibold text-xl">{p.title}</p>
               <span>${p.price}</span>

@@ -4,6 +4,7 @@ import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../utils/Spinner";
 import { useUser } from "../context/UserContext";
+import { useProfileImage } from "../context/AuthContext";
 
 const AuthPage = () => {
   const [username, setUsername] = useState("");
@@ -13,9 +14,8 @@ const AuthPage = () => {
   const [errorMessage, setErrorMessage] = useState(false);
   const navigate = useNavigate();
 
-  // const { setUser } = useUser();
-
   const { setUser } = useUser();
+  const { setUserProfileImage } = useProfileImage();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -31,6 +31,8 @@ const AuthPage = () => {
 
         console.log(response);
         setUser(response.data.firstName);
+        setUserProfileImage(response.data.image);
+        setPr;
         setLoading(false);
       }
     } catch (err) {

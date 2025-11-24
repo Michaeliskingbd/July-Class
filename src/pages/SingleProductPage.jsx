@@ -20,17 +20,24 @@ const SingleProductPage = () => {
     fetchproduct();
   }, []);
   return (
-    <section className="flex items-center p-24 justify-center">
-      <article className="relative shadow-md w-72">
-        <img className="w-52" src={singleProduct.images[0]} alt="image" />
-        <div className="p-4">
-          <p className="font-semibold text-xl">{singleProduct.title}</p>
-          <span>${singleProduct.price}</span>
-          <div className="absolute top-2 right-3 bg-black/50 text-white px-3 py-1">
-            <span>{singleProduct.category}</span>
+    <section className="grid grid-cols-2">
+      <div>
+        <img
+          className="w-full object-cover"
+          src={singleProduct.images}
+          alt="image"
+        />
+      </div>
+      <div className="p-10">
+        <div className="">
+          <div>
+            <p>{singleProduct.category}</p>
+            <p className="font-semibold text-xl">{singleProduct.title}</p>
+            <p>{singleProduct.description}</p>
+            <span>${singleProduct.price}</span>
           </div>
         </div>
-      </article>
+      </div>
     </section>
   );
 };

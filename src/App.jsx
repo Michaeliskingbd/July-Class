@@ -9,20 +9,25 @@ import ErrorPage from "./pages/ErrorPage";
 import Products from "./pages/Products";
 import SingleProductPage from "./pages/SingleProductPage";
 import { UserProvider } from "./context/UserContext";
+import { AuthProvider } from "./context/AuthContext";
+import Upload from "./pages/Upload";
 
 function App() {
   return (
     <UserProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/auth" element={<AuthPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/counter" element={<Counter />} />
-        <Route path="/productsPage" element={<ProductPage />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<SingleProductPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="/productsPage" element={<ProductPage />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/products/:id" element={<SingleProductPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </AuthProvider>
     </UserProvider>
   );
 }
